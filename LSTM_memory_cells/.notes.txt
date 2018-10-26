@@ -1,0 +1,49 @@
+
+data source:
+https://www.kaggle.com/uspto/patent-grant-full-text
+
+removed:
+'<img>', '<p>', '<figure>', '<othercit>', '&' and '|'. 
+
+# 
+data: data/patent_1M.txt
+params: X_LEN = 20
+
+##
+model: 21 epochs
+loss: 0.2085 - acc: 0.9305
+models/patent_1M_20.h5
+
+np.random.seed(123)
+starter = '<?xml version=\"1.0\" '
+
+lstm1_c: 5,17,18,39
+lstm1_c_diff: 26,102
+lstm2_c_diff: 17,29,36,73,81,84,112
+
+## 
+model: 41 epochs
+loss: 0.1894 - acc: 0.9346
+models/patent_1M_40.h5
+
+np.random.seed(123)
+starter = '<?xml version=\"1.0\" '
+
+lstm1_c_diff: 13,18,42,72,83,110,112
+lstm2_c_diff: 4,7,11,36,37,50,66,73,79,102,(112),119,121
+lstm1_a: 69
+lstm2_a: 8,28,40,60,66,90,113
+
+At t=316:
+lstm1, forget gates: 13,22,31,33,37,43,47,50,64,70,72,82,114,126,127
+lstm1, cells: 3,4,5,17,18,24,26,43,59,60,63,74,102,104
+
+lstm2, forget gates: 1,2,3,10,20,21,22,23,24,25,27,40,43,46,74,75,76,77,78,91,95,102,117,118,120,121,123
+lstm2, cells: 11,13,18,36,40,65,74,75,84,89,90,107,112,118,119,125,126,127
+
+#
+data: data/patent_1M.txt
+params: X_LEN = 1
+model: 241 epochs
+loss: 1.8410 - acc: 0.4020
+models/patent_1M_1xlen_241.h5
