@@ -5,20 +5,20 @@ architecture | # parameters
 resnet34 | 21.8 M
 resnet50 | 25.6 M
 resnet101 | 44.6 M
-resnext50 | 25.1 M
-resnext101 | 44.2 M
-se_resnext50 | 27.6 M
+resnext\_50_32x4d | 25.1 M
+resnext\_101_32x4d | 44.2 M
+se\_resnext50_32x4d | 27.6 M
 senet154 | 115.1 M
-wrn | 68.9 M
-dn121 | 8 M
-dn201 | 20 M
-inceptionresnet_2 | 55.9 M
-inception_4 | 42.7 M
+wrn\_50_2f | 68.9 M
+densenet121 | 8 M
+densenet201 | 20 M
+InceptionResnetV2 | 55.9 M
+inceptionv4 | 42.7 M
 
 The above table lists the total number of parameters of the most popular CNN architectures. The model names are the built-in architectures provided by [fast.ai v0.7](https://github.com/fastai/fastai/tree/master/old). 
 
-I got these numbers when I was trying different architectures for a classification problem, so I took it down just for reference. Although he last few layers of the original models are cut out to adapt the problem, the total number of parameters are not affected much. 
+It's easy to count the parameter numbers using PyTorch directly, but as I was using fast.ai v0.7 for a classification problem with different architectures and already got these numbers, I just put here as a reference. Although the last few layers of the original models are cut out to adapt the problem, the total number of parameters are not affected much. 
 
-Note that although we can take this as a reference for how large the architecture is, the memory usage does not only depend on the number of parameters, but also the network structures. 
+Note that although we can take this as a reference for how large the architecture is, the memory usage does not only depend on the number of parameters, but also the network structures and other settings.  
 
 Check [this notebook](cnn_arch_n_params.ipynb) for how these numbers are calculated. 
