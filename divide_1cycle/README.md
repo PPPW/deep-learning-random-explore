@@ -8,11 +8,11 @@
 
 The [1cycle policy](https://arxiv.org/pdf/1803.09820.pdf) is adopted as the default training method by [fastai](https://docs.fast.ai/). From my limited experiences and not so rigorous performance tests with the fastai's implementation, it turns out for the following three training policies, (1) works the best: 
 
-(1) run 1cycle policy for 40 epochs.
+1. run 1cycle policy for 40 epochs.
 
-(2) run 1cycle policy for 20 epochs, then run another 1cycle policy with smaller max learning rate.
+1. run 1cycle policy for 20 epochs, then run another 1cycle policy with smaller max learning rate.
 
-(3) run 1cycle policy for 10 epochs, run again for 10 epochs with same max learning rate, and run again for another two cycles. 
+1. run 1cycle policy for 10 epochs, run again for 10 epochs with same max learning rate, and run again for another two cycles. 
 
 It kinds of makes sense, you'd rather just run 1cycle policy once, it's literally _one_ cycle. Of course there're other parameters, such as `div_factor` and `pct_start`, that also matter a lot, but I fixed those parameter in the comparison, for simplicity.
 
@@ -20,6 +20,8 @@ Now the problem comes. For some tasks, running a few epochs already costs consid
 
 
 ## How to run
+
+_Update_: it's already integrated into fastai in [this PR](https://github.com/fastai/fastai/pull/1556). You can use it directly in `learn.fit`. If you are using an old version, you can use the code below. 
 
 The `PartialOneCycleScheduler` inherits `OneCycleScheduler` and made the changes we discussed above. To use it, for example, run a 20 epoch 1cycle policy starting from epoch 8:
 
